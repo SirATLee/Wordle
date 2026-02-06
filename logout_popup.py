@@ -22,7 +22,6 @@ class LogoutPopup:
         screen.blit(overlay, (0, 0))
 
         # 2. Nền Popup
-        # Màu nền tối (Rich Black) và Viền xanh (Caribbean Green) theo bảng màu bạn gửi
         pygame.draw.rect(screen, (10, 20, 30), (self.x, self.y, self.width, self.height), border_radius=10)
         pygame.draw.rect(screen, (0, 223, 129), (self.x, self.y, self.width, self.height), 2, border_radius=10)
 

@@ -31,6 +31,9 @@ class LoginPopup:
         self.rect_login_tab = pygame.Rect(self.x, self.y, self.width//2, 50)
         self.rect_reg_tab = pygame.Rect(self.x + self.width//2, self.y, self.width//2, 50)
 
+        self.notify_msg = ""          
+        self.notify_end_time = 0
+
     def update(self, events):
         #Xử lý input
         for event in events:
@@ -56,16 +59,24 @@ class LoginPopup:
                     password = self.password_box.text
 
                     if not username or not password:
-                        print("Vui lòng nhập đầy đủ thông tin")
+                        self.show_notify("Vui lòng nhập đầy đủ thông tin")
                     else:
                         if self.is_registering:
                             if self.manager.data_manager.register(username, password):
                                 self.manager.popup = None
+                            else:
+                                if " " in username.strip(" "):
+                                    self.show_notify("Tên đăng nhập không hợp lệ")
+                                else:
+                                    self.show_notify("Tên đăng nhập đã tồn tại")
 
                         
                         else:
                             if self.manager.data_manager.login(username, password):
                                 self.manager.popup = None
+                            else:
+                                self.show_notify("Tên đăng nhập hoặc mật khẩu không chính xác")
+
 
     def draw(self, screen):
         # Overlay
@@ -108,9 +119,29 @@ class LoginPopup:
         self.btn_submit.text = "ĐĂNG KÝ" if self.is_registering else "ĐĂNG NHẬP"
         self.btn_submit.draw(screen)
         self.btn_close.draw(screen)
-
+        
+        self.draw_notify(screen)
         if self.message:
             color = (6, 214, 160) if "thành công" in self.message else (255, 100, 100)
             msg_surf = self.font_small.render(self.message, True, color)
             # Căn giữa thông báo
             screen.blit(msg_surf, (self.x + (self.width - msg_surf.get_width())//2, self.y + 300))
+
+    def show_notify(self, message):
+        self.notify_msg = message
+        self.notify_end_time = pygame.time.get_ticks() + 1500 
+
+    # Hàm này vẽ thông báo đè lên popup
+    def draw_notify(self, screen):
+        current_time = pygame.time.get_ticks()
+        if current_time < self.notify_end_time:
+            text_surf = self.font_small.render(self.notify_msg, True, (255, 255, 255)) 
+            
+            bg_rect = text_surf.get_rect(center=(self.x + self.width // 2, self.y + self.height // 2 - 250))
+            bg_rect.inflate_ip(40, 20) 
+
+            pygame.draw.rect(screen, (50, 50, 50), bg_rect, border_radius=10)
+            pygame.draw.rect(screen, NEON_GREEN, bg_rect, 2, border_radius=10) 
+
+            text_rect = text_surf.get_rect(center=bg_rect.center)
+            screen.blit(text_surf, text_rect)

@@ -76,7 +76,6 @@ class GameDataManager:
         pass
     def login(self, username, password):    
         for user in self.users_save_slots:
-            print(user.username, user.password)
             if user.username == username and user.password == password:
                 self.current_user = user
                 self.current_user.last_second_time = pygame.time.get_ticks()
@@ -89,10 +88,10 @@ class GameDataManager:
         for user in self.users_save_slots:
             if user.username == username:
                 print("Tên đăng nhập đã tồn tại!")
-                return
+                return False
         if " " in username.strip(" "):
             print("Tên đăng nhập không hợp lệ")
-            return
+            return False
         new_user = User(username,password)
         self.users_save_slots.append(new_user)
         self.current_user = new_user
