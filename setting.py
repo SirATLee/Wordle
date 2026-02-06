@@ -7,7 +7,6 @@ from assets import *
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption("Wordle")
-playbut_img = pygame.image.load("images/button_img/test_button.png")
 font = pygame.font.Font(FONT,55)
 font18 = pygame.font.Font(FONT,18)
 font20 = pygame.font.Font(FONT,20)

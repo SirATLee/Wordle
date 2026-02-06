@@ -40,7 +40,6 @@ class User:
                 self.stats_en[3] += 1
                 self.stats_en[1] = total_score//self.stats_en[3]
                 self.stats_en[4] += streak
-                print(self.stats_en)
             elif mode == "VI":
                 if score > self.stats_vi[0]: self.stats_vi[0] = score
                 if streak > self.stats_vi[2]: self.stats_vi[2] = streak
@@ -179,7 +178,6 @@ class User:
             f"{game.time_added}|||"
             f"{game.type}"  
         )
-        print(game.time_added)
         if game.mode == "VI":
             self.saved_game_string += f"|||{game.secret_word_with_space}"
     def get_string_data(self):
@@ -240,7 +238,6 @@ class User:
             self.mode = game_parts[0]
             self.secret_word = game_parts[1]
             self.word_len = int(game_parts[2])
-            print(game_parts[3], "12313")
             if game_parts[3]:
                 self.stages_time = [int(i) for i in game_parts[3].split("-")]
             else:
@@ -262,7 +259,6 @@ class User:
             self.remaining_undo = int(game_parts[14])
             self.letter_color = self.str_to_stack(game_parts[15])
             self.total_score = float(game_parts[16])
-            print(game_parts[17])
             self.time_added = float(game_parts[17])
             self.type = game_parts[18]
             if self.mode == "VI":

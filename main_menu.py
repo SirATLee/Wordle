@@ -26,7 +26,6 @@ screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption("Wordle")
 font = pygame.font.Font(FONT,75)
 font_user = pygame.font.Font(FONT,20)
-playbut_img = pygame.image.load("images/button_img/test_button.png")
 user_account_img = pygame.image.load("images/button_img/user_account.png")
 logout_img = pygame.image.load("images/button_img/logout.png")
 setting_img = pygame.image.load("images/button_img/setting.png")
@@ -49,7 +48,6 @@ def draw_state_changing_button(manager):
     if pygame.mouse.get_just_released()[0] and manager.popup is None and manager.logout_popup is None and not manager.setting and not manager.user_info and not manager.overwrite_noti and not manager.continue_popup:
         if play_button.rect.collidepoint(mouse_pos):
             if manager.data_manager.current_user is not None:
-                print(manager.data_manager.current_user.is_playing_unfinished)
                 if manager.data_manager.current_user.is_playing_unfinished == False:
                     manager.state = "Mode Choosing"
                 else:

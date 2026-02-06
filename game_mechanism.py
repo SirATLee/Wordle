@@ -177,7 +177,6 @@ class Game:
     #Kiểm tra từ
     def check_guess(self):
         guess = (self.current_guesses).lower()
-        print(guess)
         if len(guess) < self.word_len:
             return
         #Tạo copy của keyboard để lưu vào stack
@@ -274,9 +273,6 @@ class Game:
                     no_undo_remaining_popup()
             else:
                 pass
-                    
-        print('undo:',self.guess_undo_stack[self.current_row])
-        print('redo',self.guess_redo_stack[self.current_row])
 
     def redo(self):
         if len(self.guess_redo_stack[self.current_row]) != 0:
@@ -306,7 +302,5 @@ class Game:
 
                 else:
                     return
-        print('undo:',self.guess_undo_stack[self.current_row])
-        print('redo',self.guess_redo_stack[self.current_row])
 
         

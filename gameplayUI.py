@@ -14,7 +14,6 @@ pygame.display.set_caption("Wordle")
 font = pygame.font.Font(FONT,55)
 large_font = pygame.font.Font(FONT,75)
 small_font = pygame.font.Font(FONT,20)
-playbut_img = pygame.image.load("images/button_img/test_button.png")
 keyboard_img = pygame.image.load("images/button_img/keyboard.png")
 keyboard_off_img = pygame.image.load("images/button_img/keyboard_off.png")
 undo_img = pygame.image.load("images/button_img/undo.png")
@@ -52,7 +51,6 @@ def game_notify(manager):
                 manager.data_manager.current_user.update_after_game(manager.game.mode, manager.game.total_score, streak, manager.game.type)
                 manager.data_manager.save_data()
                 manager.data_manager.current_user.is_updated = True
-                print(manager.game.mode, manager.game.total_score, streak)
             game_over_notify(manager)
 
 def game_over_notify(manager):

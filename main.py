@@ -84,7 +84,6 @@ while True:
                                     game.current_guesses = game.current_guesses[:-1]
                                     game.current_col -= 1
                             elif event.key == pygame.K_RETURN:
-                                print(game.stages_time)
                                 if game.current_col == game.word_len:
                                     if game.is_valid():
                                         game.check_guess()
@@ -100,7 +99,6 @@ while True:
                                         game.guesses[game.current_row][game.current_col]  = event.unicode.upper()
                                         game.current_guesses += event.unicode.upper()
                                         game.current_col += 1
-                                        print(game.current_guesses)
                             #Reset Redo stack
                             game.guess_redo_stack = [[] for i in range(game.word_len + 1)]
                             game.keyboard_redo_stack = []
