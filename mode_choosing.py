@@ -73,7 +73,6 @@ def confirm_button(manager):
                     option.ischosen = False
                     manager.game = game_mechanism.Game(option.value,option.mode)
                     manager.data_manager.current_user.is_updated = False
-                    print(manager.game.secret_word,1)
                     manager.state = "Game Play"
                     if manager.sfx:
                         game_enter_sfx.play()
@@ -89,7 +88,6 @@ def confirm_button(manager):
                         manager.game = game_mechanism.Game(option.value,option.mode)
                         manager.game.type = "RANK"
                         manager.data_manager.current_user.is_updated = False
-                        print(manager.game.secret_word,1)
                         manager.state = "Game Play"
                         if manager.sfx:
                             game_enter_sfx.play()

@@ -99,7 +99,6 @@ def game_over_notify(manager):
             if type == "PRACTICE":
                 manager.game = game_mechanism.Game(manager.game.word_len,manager.game.mode)
                 manager.data_manager.current_user.is_updated = False
-                print(manager.game.secret_word,1)
                 manager.state = "Game Play"
                 manager.data_manager.save_data()
             else:
@@ -112,7 +111,6 @@ def game_over_notify(manager):
                     manager.game = game_mechanism.Game(manager.game.word_len,manager.game.mode)
                     manager.game.type = "RANK"
                     manager.data_manager.current_user.is_updated = False
-                    print(manager.game.secret_word,1)
                     manager.state = "Game Play"
                     manager.data_manager.save_data()
                 else:
@@ -346,7 +344,6 @@ def draw_keyboard(manager):
                                 word_len = random.randint(5,6)
                                 manager.game = game_mechanism.Game(word_len)
                                 game = manager.game
-                                print(manager.game.secret_word)
                             else:
                                 if game.keyboard[row][col][0] == "ENTER":
                                     if game.current_col == game.word_len:
@@ -435,7 +432,6 @@ def draw_keyboard(manager):
                                 mode = game.mode
                                 manager.game = game_mechanism.Game(word_len,mode)
                                 game = manager.game
-                                print(manager.game.secret_word)
                             else:
                                 if game.keyboard[row][col][0] == "ENTER":
                                     if game.current_col == game.word_len:

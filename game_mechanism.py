@@ -66,7 +66,6 @@ class Game:
 
             self.guess_attempts = self.word_len - 2
             self.secret_word = generate_equation(self.word_len)
-            print(self.secret_word)
             self.guesses = [["" for i in range(self.word_len)] for j in range(self.guess_attempts)]
     
     #Đặt lại các biến sau khi qua từ mới
@@ -115,7 +114,6 @@ class Game:
             self.guesses = [["" for i in range(self.word_len)] for j in range(self.guess_attempts)]
             self.keyboard = [[["1","WHITE"],["2","WHITE"],["3","WHITE"],["4","WHITE"],["5","WHITE"],["6","WHITE"],["7","WHITE"],["8","WHITE"],["9","WHITE"],["0","WHITE"]],
                              [["+","WHITE"],["-","WHITE"],["*","WHITE"],["/","WHITE"],["=","WHITE"],["ENTER","WHITE"],["BACKSPACE","WHITE"]]]
-        print(self.secret_word)
 
     def load_unfinished_game(self, user):
         if not user.is_playing_unfinished:

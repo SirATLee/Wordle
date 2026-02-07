@@ -3,7 +3,6 @@ from RPN import *
 def generate_equation(length):
     op = ["+", "-", "*", "/"]
     while True:
-        print(1)
         num_ops = random.choice([1,2])
         if num_ops == 2:
             numbers = [random.randint(1,10) for _ in range(num_ops + 1)]
