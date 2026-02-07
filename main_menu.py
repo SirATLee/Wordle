@@ -132,10 +132,10 @@ def draw_practice_switch(screen, x, y, manager):
     # Vẽ nút tròn (Switch)
     circle_radius = 15
     if user.is_practice_mode:
-        circle_x = x + width - circle_radius - 5 # Gạt sang phải
+        circle_x = x + width - circle_radius - 5 
         status_text = "ON"
     else:
-        circle_x = x + circle_radius + 5 # Gạt sang trái
+        circle_x = x + circle_radius + 5 
         status_text = "OFF"
         
     pygame.draw.circle(screen, (255, 255, 255), (circle_x, y + height//2), circle_radius)
@@ -288,7 +288,7 @@ def draw_profile_UI(screen, manager):
     pygame.draw.rect(screen, (30, 30, 30), (profile_x, profile_y, profile_w, profile_h), border_radius=15)
     pygame.draw.rect(screen, (0, 230, 150), (profile_x, profile_y, profile_w, profile_h), 3, border_radius=15)
 
-    # TÊN NGƯỜI CHƠI
+    # Tên người chơi
     name_surf = font40.render(user.username, True, WHITE)
     screen.blit(name_surf, (margin_left, profile_y + 10)) # Giữ nguyên vị trí cũ
 
@@ -328,21 +328,20 @@ def draw_profile_UI(screen, manager):
     exp_rect = exp_text.get_rect(center=(bar_x + bar_w/2, bar_y - 12))
     screen.blit(exp_text, exp_rect)
 
-    # Level tiếp theo (Bên phải thanh, màu trắng)
+    # Level tiếp theo 
     next_lvl_surf = font24.render(str(cur_level + 1), True, WHITE)
     screen.blit(next_lvl_surf, (bar_x + bar_w + 20, profile_y + 60))
-
-    # 5. ĐƯỜNG KẺ NGANG (Màu Neon)
+ 
     pygame.draw.line(screen, (0, 230, 150), (margin_left, profile_y + 110), (margin_right, profile_y + 110), 2)
 
-    # 6. THỜI GIAN CHƠI (Màu trắng)
+    # Thời gian chơi 
     total_time = user.time_spent
     time_str = f"Thời gian chơi: {total_time // 3600}h {(total_time % 3600) // 60}m {total_time % 60}s"
     time_surf = font26.render(time_str, True, WHITE)
     time_rect = time_surf.get_rect(center=(center_x, profile_y + 135))
     screen.blit(time_surf, time_rect)
 
-    # 7. BẢNG THỐNG KÊ (GRID)
+    # Bảng thống kê
     table_start_y = profile_y + 210
     row_gap = 42
 
@@ -361,23 +360,18 @@ def draw_profile_UI(screen, manager):
     ]
     col_headers = ["EN", "VI", "EQ"]
 
-    # Tiêu đề cột (EN, VI, EQ) - Màu Neon để nổi bật
     for i, header in enumerate(col_headers):
-        head_surf = font28.render(header, True, (0, 230, 150)) # <-- Màu NEON
+        head_surf = font28.render(header, True, (0, 230, 150)) 
         head_rect = head_surf.get_rect(center=(col_x_centers[i], table_start_y - 30))
         screen.blit(head_surf, head_rect)
 
-    # Các đường kẻ bảng (Màu Neon hoặc Xám nhạt - Chọn Neon cho đồng bộ)
+    
     line_start_y = table_start_y - 40
     line_end_y = table_start_y + len(rows_labels) * row_gap - 20
     
-    # Đường dọc (Giữa thông tin và EN)
     pygame.draw.line(screen, (0, 230, 150), (col_start_x, line_start_y), (col_start_x, line_end_y), 2)
-    # Đường dọc (Giữa EN và VI)
     pygame.draw.line(screen, (0, 230, 150), (col_start_x + col_spacing, line_start_y), (col_start_x + col_spacing, line_end_y), 2)
-    # Đường dọc (Giữa VI và EQ)
     pygame.draw.line(screen, (0, 230, 150), (col_start_x + col_spacing*2, line_start_y), (col_start_x + col_spacing*2, line_end_y), 2)
-    # Đường ngang dưới tiêu đề cột
     pygame.draw.line(screen, (0, 230, 150), (margin_left, profile_y + 200), (margin_right, profile_y + 200), 2)
 
     # Dữ liệu cho từng dòng
@@ -386,19 +380,17 @@ def draw_profile_UI(screen, manager):
     for r_idx, label in enumerate(rows_labels):
         current_y = table_start_y + r_idx * row_gap
         
-        # Tên hàng (Điểm cao nhất...): Màu Trắng
-        label_surf = font22.render(label, True, WHITE) # <-- Màu Trắng
+        label_surf = font22.render(label, True, WHITE) 
         screen.blit(label_surf, (margin_left, current_y))
 
-        # Dữ liệu số (0, 0.0...): Màu Trắng
         for c_idx, stats in enumerate(data_sources):
             value = stats[r_idx]
-            if r_idx == 1: # Điểm trung bình (số thực)
+            if r_idx == 1: 
                 display_str = str(round(value, 1))
             else: # Số nguyên
                 display_str = str(int(value))
             
-            val_surf = font22.render(display_str, True, WHITE) # <-- Màu Trắng
+            val_surf = font22.render(display_str, True, WHITE) 
             val_rect = val_surf.get_rect(center=(col_x_centers[c_idx], current_y + 10))
             screen.blit(val_surf, val_rect)
 

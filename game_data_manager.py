@@ -80,17 +80,14 @@ class GameDataManager:
                 self.current_user = user
                 self.current_user.last_second_time = pygame.time.get_ticks()
                 return True
-        print("Tên đăng nhập hoặc mật khẩu không chính xác!")
         return False
             
 
     def register(self,username, password): 
         for user in self.users_save_slots:
             if user.username == username:
-                print("Tên đăng nhập đã tồn tại!")
                 return False
         if " " in username.strip(" "):
-            print("Tên đăng nhập không hợp lệ")
             return False
         new_user = User(username,password)
         self.users_save_slots.append(new_user)
@@ -101,7 +98,7 @@ class GameDataManager:
 
 
     def xor_cipher(self, input):
-        key = b"Khoa_Bao_Mat_Sieu_Cap_Vippro_2026" 
+        key = b"Do_An_Wordle_CSLT" 
         
         output = bytearray()
         for i in range(len(input)):

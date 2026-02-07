@@ -16,21 +16,20 @@ class LogoutPopup:
         self.btn_no = TextButton(self.x + 225, self.y + 120, 140, 50, "KHÔNG", self.font, self.manager.sfx)
 
     def draw(self, screen):
-        # Lớp phủ mờ
         overlay = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
         overlay.fill((0, 0, 0, 150))
         screen.blit(overlay, (0, 0))
 
-        # 2. Nền Popup
+        # Nền Popup
         pygame.draw.rect(screen, (10, 20, 30), (self.x, self.y, self.width, self.height), border_radius=10)
         pygame.draw.rect(screen, (0, 223, 129), (self.x, self.y, self.width, self.height), 2, border_radius=10)
 
-        # 3. Text thông báo
+        # Text thông báo
         text_surf = self.font_bold.render("Bạn có chắc muốn đăng xuất?", True, (255, 255, 255))
         text_rect = text_surf.get_rect(center=(self.x + self.width//2, self.y + 60))
         screen.blit(text_surf, text_rect)
 
-        # 4. Vẽ nút
+        # Vẽ nút
         self.btn_yes.draw(screen)
         self.btn_no.draw(screen)
 

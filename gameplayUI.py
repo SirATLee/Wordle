@@ -507,12 +507,10 @@ def draw_timer_bar(manager, screen):
     bar_rect = pygame.Rect(0, 0, bar_width, 10)
     
     
-    # Màu sắc thay đổi: Xanh nếu > 60s, Đỏ nếu < 30s
+    # Xanh nếu > 30s, Đỏ nếu < 30s
     color = GREEN if remaining_seconds > 30 else RED
     pygame.draw.rect(screen, color, bar_rect, border_radius=3)
-    # thời gian
-    #time_text = font20.render(f"TIME: {remaining_seconds}s", True, BLACK)
-    #screen.blit(time_text, (400, 25))
+
 def caculate_final_score(manager):
     total_score = 0
     base_score = 1000

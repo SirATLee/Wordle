@@ -113,9 +113,7 @@ def draw_overwrite_noti(screen, manager):
     cancel_text_rect = cancel_surf.get_rect(center=cancel_rect.center)
     screen.blit(cancel_surf, cancel_text_rect)
 
-    ########################
-    #   Xử lý các nút bấm   #
-    ########################
+    # Xử lý click
 
     mouse_pos = pygame.mouse.get_pos()
     if pygame.mouse.get_just_released()[0]:

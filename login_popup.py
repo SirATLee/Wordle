@@ -5,7 +5,7 @@ from button import TextButton
 
 class LoginPopup:
     def __init__(self, screen_w, screen_h, manager_ref):
-        self.manager = manager_ref # Tham chiếu ngược lại manager để gọi hàm login
+        self.manager = manager_ref 
         self.width, self.height = 400, 350
         self.x = (screen_w - self.width) // 2
         self.y = (screen_h - self.height) // 2
@@ -25,7 +25,7 @@ class LoginPopup:
 
         # Trạng thái
         self.is_registering = False # False là Login, True là Register
-        self.message = "" # Thông báo lỗi/thành công
+        self.message = "" 
 
         # Nút chuyển đổi chế độ (Tab)
         self.rect_login_tab = pygame.Rect(self.x, self.y, self.width//2, 50)
@@ -52,7 +52,7 @@ class LoginPopup:
                     self.message = ""
 
                 if self.btn_close.rect.collidepoint(mouse_pos):
-                    self.manager.popup = None # Tắt popup
+                    self.manager.popup = None 
 
                 if self.btn_submit.rect.collidepoint(mouse_pos):
                     username = self.username_box.text
@@ -81,7 +81,7 @@ class LoginPopup:
     def draw(self, screen):
         # Overlay
         overlay = pygame.Surface(screen.get_size(), pygame.SRCALPHA)
-        overlay.fill((0, 0, 0, 180)) # Màu đen trong suốt
+        overlay.fill((0, 0, 0, 180)) 
         screen.blit(overlay, (0, 0))
 
         mouse_pos = pygame.mouse.get_pos()
@@ -115,7 +115,7 @@ class LoginPopup:
         screen.blit(lbl_pass, (self.x + 50, self.y + 135))
         self.password_box.draw(screen)
 
-        # 5. Nút và Thông báo
+        # Nút và Thông báo
         self.btn_submit.text = "ĐĂNG KÝ" if self.is_registering else "ĐĂNG NHẬP"
         self.btn_submit.draw(screen)
         self.btn_close.draw(screen)
